@@ -59,9 +59,3 @@ The system captures video from a camera, detects faces, and matches them to pre-
 
 Contributions are welcome! If you encounter issues or have improvements, feel free to open an issue or create a pull request.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-You can copy and paste this content into your README.md file. Feel free to modify it based on your specific needs.
