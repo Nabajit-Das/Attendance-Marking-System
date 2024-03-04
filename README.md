@@ -35,7 +35,7 @@ The system captures video from a camera, detects faces, and matches them to pre-
 2. Install dependencies:
 
    ```bash
-   pip install -r requirements.txt
+   pip install opencv-python numpy pandas openpyxl scikit-learn
    ```
 
 ## Usage
@@ -44,13 +44,13 @@ The system captures video from a camera, detects faces, and matches them to pre-
 2. Train the face recognition model:
 
    ```bash
-   python train_model.py
+   python faceRegistration.py
    ```
 
 3. Run the attendance marking system:
 
    ```bash
-   python attendance_marking_system.py
+   python attendance01.py
    ```
 
 4. The system will start capturing video, recognizing faces, and logging attendance.
