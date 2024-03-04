@@ -1,6 +1,6 @@
-Certainly! Below is the content for your README.md file:
 
-```markdown
+
+
 # Attendance Marking System
 
 Attendance Marking System is a facial recognition-based solution for automating attendance tracking. This system utilizes OpenCV, NumPy, and pandas for face detection, recognition, and attendance logging.
