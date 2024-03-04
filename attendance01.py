@@ -33,8 +33,9 @@ label_encoder = LabelEncoder()
 y_encoded = label_encoder.fit_transform(y)
 
 # Train a Support Vector Machine (SVM) classifier
-svm_classifier = SVC(kernel='linear', C=1.0)
+svm_classifier = SVC(kernel='linear', C=10.0)
 svm_classifier.fit(X, y_encoded)
+
 
 # Create attendance DataFrame
 attendance_df = pd.DataFrame(columns=['Name', 'Time', 'UpdateCount'])
