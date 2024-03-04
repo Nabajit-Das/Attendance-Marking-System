@@ -58,7 +58,7 @@ def collect_face_data(parent_folder, person_name, num_samples=100):
 parent_folder = "all_face_data"
 
 # Specify the person's name
-person_name = "simrandeep"
+person_name = "nishant"
 
 # Collect face data for the specified person (adjust num_samples as needed)
-collect_face_data(parent_folder, person_name, num_samples=50)
+collect_face_data(parent_folder, person_name, num_samples=100)

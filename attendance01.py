@@ -117,10 +117,10 @@ for slot in range(time_slots):
 cap.release()
 cv2.destroyAllWindows()
 
-# Create 'final' DataFrame for people with more than 300 updates
+# Create 'final' DataFrame for people with more than 13 updates
 final_df = pd.DataFrame(columns=['Name', 'UpdateCount'])
 for name, count in update_counts.items():
-    if count > 300:
+    if count > 13:
         final_df = final_df._append({'Name': name, 'UpdateCount': count}, ignore_index=True)
 
 
