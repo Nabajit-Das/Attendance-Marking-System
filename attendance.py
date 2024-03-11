@@ -33,8 +33,9 @@ label_encoder = LabelEncoder()
 y_encoded = label_encoder.fit_transform(y)
 
 # Train a Support Vector Machine (SVM) classifier
-svm_classifier = SVC(kernel='linear', C=1.0)
+svm_classifier = SVC(kernel='linear', C=10.0)
 svm_classifier.fit(X, y_encoded)
+
 
 # Create attendance DataFrame
 attendance_df = pd.DataFrame(columns=['Name', 'Time', 'UpdateCount'])
@@ -54,6 +55,9 @@ time_interval = 5  # seconds
 
 # Set the total duration for capturing images (1 minute)
 total_duration = 60  # seconds
+
+# File to log attendance data
+attendance_log_file = "attendance_log.xlsx"
 
 # Capture images for each time slot
 for slot in range(time_slots):
@@ -91,32 +95,36 @@ for slot in range(time_slots):
                 # Add attendance record for each person
                 attendance_df = attendance_df._append({'Name': predicted_name, 'Time': timestamp, 'UpdateCount': update_counts[predicted_name]}, ignore_index=True)
 
+                # Draw a rectangle around the detected face
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+                # Display the name of the face
+                cv2.putText(frame, predicted_name, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+
             # Display frame
             cv2.imshow('Attendance Marking', frame)
 
-            # Exit if 'q' key is pressed
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
-
         # Wait for the specified time interval
-        cv2.waitKey(time_interval * 1000)
+        cv2.waitKey(100)
 
+    # Log attendance data to the Excel file every 5 seconds
+    attendance_df.to_excel(attendance_log_file, index=False)
+
+    # Exit if 'Escape' key is pressed
+    if cv2.waitKey(1) == 27:
+        break
 
 # Release video capture and destroy windows
 cap.release()
 cv2.destroyAllWindows()
 
-# Save attendance to Excel file
-attendance_file = "attendance_with_update_count.xlsx"
-attendance_df.to_excel(attendance_file, index=False)
-
-# Create 'final' DataFrame for people with more than 3 updates
+# Create 'final' DataFrame for people with more than 13 updates
 final_df = pd.DataFrame(columns=['Name', 'UpdateCount'])
 for name, count in update_counts.items():
-    if count > 3:
+    if count > 13:
         final_df = final_df._append({'Name': name, 'UpdateCount': count}, ignore_index=True)
 
 
 # Save 'final' DataFrame to 'final.xlsx' file
-final_file = "final.xlsx"
+final_file = "final_attendance.xlsx"
 final_df.to_excel(final_file, index=False)
