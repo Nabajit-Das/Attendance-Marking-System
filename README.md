@@ -1,6 +1,6 @@
-Certainly! Below is the content for your README.md file:
 
-```markdown
+
+
 # Attendance Marking System
 
 Attendance Marking System is a facial recognition-based solution for automating attendance tracking. This system utilizes OpenCV, NumPy, and pandas for face detection, recognition, and attendance logging.
@@ -35,7 +35,7 @@ The system captures video from a camera, detects faces, and matches them to pre-
 2. Install dependencies:
 
    ```bash
-   pip install -r requirements.txt
+   pip install opencv-python numpy pandas openpyxl scikit-learn
    ```
 
 ## Usage
@@ -44,13 +44,13 @@ The system captures video from a camera, detects faces, and matches them to pre-
 2. Train the face recognition model:
 
    ```bash
-   python train_model.py
+   python faceRegistration.py
    ```
 
 3. Run the attendance marking system:
 
    ```bash
-   python attendance_marking_system.py
+   python attendance01.py
    ```
 
 4. The system will start capturing video, recognizing faces, and logging attendance.
@@ -59,9 +59,3 @@ The system captures video from a camera, detects faces, and matches them to pre-
 
 Contributions are welcome! If you encounter issues or have improvements, feel free to open an issue or create a pull request.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-You can copy and paste this content into your README.md file. Feel free to modify it based on your specific needs.
